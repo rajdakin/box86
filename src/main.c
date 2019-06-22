@@ -212,9 +212,10 @@ int main(int argc, const char **argv, const char **env) {
         AddPath("/usr/lib/i386-linux-gnu", &context->box86_ld_lib);
 #endif
     if(getenv("BOX86_NOSIGSEGV")) {
-        if (strcmp(getenv("BOX86_NOSIGSEGV"), "1")==0)
+        if (strcmp(getenv("BOX86_NOSIGSEGV"), "1")==0) {
             context->no_sigsegv = 1;
             printf_log(LOG_INFO, "BOX86: Disabling handling of SigSEGV\n");
+        }
     }
     // check BOX86_PATH and load it
     LoadEnvPath(&context->box86_path, ".:bin", "BOX86_PATH");
